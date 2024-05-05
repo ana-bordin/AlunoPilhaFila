@@ -25,6 +25,10 @@ namespace AlunoPilhaFila
         public Aluno GetPrevious()
         {
             return Previous;
+        }        
+        public int GetNumber()
+        {
+            return Number;
         }
         public override string ToString()
         {

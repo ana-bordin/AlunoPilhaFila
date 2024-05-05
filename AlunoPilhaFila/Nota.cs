@@ -25,6 +25,14 @@ namespace AlunoPilhaFila
         public Nota GetNext()
         {
             return Next;
+        }        
+        public float GetGrade()
+        {
+            return Grade;
+        }        
+        public int GetNumber()
+        {
+            return Number;
         }
         public override string ToString()
         {

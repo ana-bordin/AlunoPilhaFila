@@ -46,9 +46,9 @@
                 } while (aux != null);
             }
         }
-        public int RunOver()
+        public bool Check(int number)
         {
-            int qtdElementos = 0;
+            bool check = false;
             Aluno aux = Topo;
             if (IsEmpty())
                 EmptyMessage();
@@ -56,11 +56,17 @@
             {
                 do
                 {
+                    if (number == aux.GetNumber())
+                        check = true;
                     aux = aux.GetPrevious();
-                    qtdElementos++;
                 } while (aux != null);
             }
-            return qtdElementos;
+            return check;
+        }
+
+        public Aluno GetTopo()
+        {
+            return Topo;
         }
     }
 }

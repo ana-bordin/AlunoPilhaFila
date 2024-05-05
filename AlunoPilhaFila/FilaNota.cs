@@ -1,4 +1,6 @@
-﻿namespace AlunoPilhaFila
+﻿using System.ComponentModel.Design;
+
+namespace AlunoPilhaFila
 {
     internal class FilaNota
     {
@@ -55,21 +57,37 @@
                     this.Head = Head.GetNext();
             }               
         }
-        public int RunOver()
+        public float RunOver(int number)
         {
-            int qtdElementos = 0;
+            float result = -1;
             if (IsEmpty())
                 EmptyMessage();
             else
             {
+                float[] grade = new float[2];
+                grade[0] = -1;
+                grade[1] = -1;
+                int index = 0;
                 Nota aux = Head;
                 do
                 {
+                    if (number == aux.GetNumber())
+                    {
+                        grade[index] = aux.GetGrade();
+                        index++;
+                    }
                     aux = aux.GetNext();
-                    qtdElementos++;
                 } while (aux != Tail.GetNext());
+                if (grade[0] == 0 && grade[1] == 0)
+                    result = 0;
+                else if ((grade[0] > 0 && grade[1] > 0)|| (grade[0] > 0 && grade[1] == 0) || (grade[0] == 0 && grade[1] > 0))
+                    result = (grade[0] + grade[1]) / 2;
             }
-            return qtdElementos;
+        return result;
+        }
+        public Nota GetHead() 
+        { 
+            return Head; 
         }
     }
 }
